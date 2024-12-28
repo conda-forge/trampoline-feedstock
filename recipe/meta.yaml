@@ -10,17 +10,19 @@ source:
   sha256: 4e026488a57a7a49b3c4a809a93ace8fcccae5b66a7ef9b1b9581755c38ae15f
 build:
   noarch: python
-  number: 0
+  number: 1
   script: "{{ PYTHON }} -m pip install . -vv"
 
 requirements:
   host:
-    - python >=3.6
+    - python {{ python_min }}
     - pip
   run:
-    - python >=3.6
+    - python >={{ python_min }}
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - trampoline
 
